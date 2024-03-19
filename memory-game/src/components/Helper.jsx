@@ -22,3 +22,25 @@ export function shuffle(array) {
     return newArray;
 }
 
+export const fetchData = async (dataList, setDataList) => {
+  try {
+      const abortController = new AbortController();
+      const signal = abortController.signal;
+      const updatedDataList = [];
+
+      for (const object of dataList) {
+          const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${object.name}`, { signal });
+          if (!response.ok) {
+              throw new Error('Failed to fetch data');
+          }
+          const jsonData = await response.json();
+          const imageData = jsonData['sprites']['other']['official-artwork']['front_default'];
+          updatedDataList.push({ ...object, image: imageData });
+      }
+
+      setDataList(updatedDataList);
+  } catch (error) {
+      console.error('Error fetching data:', error);
+  }
+};
+

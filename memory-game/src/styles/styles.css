@@ -67,3 +67,47 @@ h3{
     font-size: 30px;
     color: rgb(69, 7, 240);
 }
+
+/* css for modal elements */
+
+.modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal {
+    position: relative;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* shadow effect */
+}
+
+.modal p {
+    margin: 0;
+    color: red;
+}
+
+.modal .close {
+    position: absolute;
+    top: 0;
+    right: 5px;
+    cursor: pointer;
+
+    color: blue;
+}
+
+/* mobile grid settings */
+@media only screen and (max-width: 480px){
+
+    .card-container{
+        grid-template-columns: repeat(2, 1fr);
+    }   
+}
